@@ -8,11 +8,18 @@
 	let user;
 	let messageOut;
 
+	let inputState = false;
+
 	let recUid;
 	let recName;
 
 	$: {
 		recUid = $store.currentRecUid;
+		if (recUid !== '') {
+			inputState = true;
+		} else {
+			inputState = false;
+		}
 	}
 
 	onMount(() => {
@@ -43,7 +50,6 @@
 			addDoc(senderRef, out);
 
 			messageOut = '';
-			console.log('Message sent');
 		} else {
 			alert('Error: Message not sent');
 		}
@@ -51,8 +57,16 @@
 </script>
 
 <div class="compose-message">
-	<input class="input-message" type="text" placeholder="Type Message" bind:value={messageOut} />
-	<button on:click={addMessage} class="btn-send">Send</button>
+	{#if inputState}
+		<input
+			disabled={inputState}
+			class="input-message"
+			type="text"
+			placeholder="Type Message"
+			bind:value={messageOut}
+		/>
+		<button disabled={inputState} on:click={addMessage} class="btn-send">Send</button>
+	{/if}
 </div>
 
 <style>
@@ -62,6 +76,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background-color: '';
+		box-sizing: border-box;
 	}
 
 	.compose-message > .input-message {

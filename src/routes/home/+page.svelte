@@ -22,7 +22,7 @@
 
 	.home-cont {
 		flex: 0 0 80%;
-		height: 95%;
+		height: 93vh;
 		background-color: #303030;
 		display: flex;
 		justify-content: center;

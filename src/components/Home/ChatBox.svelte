@@ -27,6 +27,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		padding: 0px 0px;
+		background-color: aliceblue;
 	}
 
 	.top {
@@ -45,9 +46,9 @@
 	}
 
 	.bottom {
-		flex: 0 0 12.8%;
+		flex: 0 0 12%;
 		width: 100%;
-		background-color: aliceblue;
+		background-color: '';
 		display: flex;
 		justify-content: center;
 		align-items: center;

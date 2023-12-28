@@ -43,7 +43,9 @@
 			<ChatItem {chat} {user} />
 		{/each}
 	{:else}
-		<p>Add new chat</p>
+		<div class="no-chat">
+			<p>ADD NEW CHAT</p>
+		</div>
 	{/if}
 </div>
 
@@ -59,5 +61,25 @@
 		overflow-x: hidden;
 		padding: 10px;
 		gap: 8px;
+	}
+	.no-chat {
+		width: 100%;
+		flex: 0 0 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.no-chat > p {
+		font-weight: bold;
+		color: darkgray;
+		font-size: 20px;
+		padding: 5px;
+		transition: 0.5s ease-in-out;
+		font-family: monospace;
+	}
+
+	.no-chat>p:hover{
+		color: coral;
 	}
 </style>

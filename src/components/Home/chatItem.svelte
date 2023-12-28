@@ -19,9 +19,9 @@
 		localStorage.setItem('rec-name', chat.recName);
 
 		store.set({
-			currentRecUid: chat.recUid
+			currentRecUid: chat.recUid,
+			currentRecName: chat.recName
 		});
-
 	}
 </script>
 

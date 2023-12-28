@@ -31,7 +31,6 @@
 	async function getMessages(recUid) {
 		if ((recUid, user)) {
 			const id = recUid;
-			console.log(id);
 
 			//Reset Messages Array
 			messages.update(() => []);
@@ -49,9 +48,16 @@
 </script>
 
 <div class="message-box">
-	{#each $messages as msg}
-		<MessageCont message={msg} {user} />
-	{/each}
+	{#if $messages.length > 0}
+		{#each $messages as msg}
+			<MessageCont message={msg} {user} />
+		{/each}
+	{:else}
+		<div class="no-messages">
+			<p>WELCOME TO MYA|\/|CHAT</p>
+			<p>|o_o|</p>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -64,8 +70,31 @@
 		justify-content: flex-start;
 		align-items: center;
 		gap: 8px;
-		background-color: whitesmoke;
+		background-color: '';
 		overflow-y: auto;
 		overflow-x: hidden;
+	}
+	.no-messages {
+		width: 100%;
+		flex: 0 0 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: aliceblue;
+	}
+
+	.no-messages > p {
+		font-weight: bold;
+		color: darkgray;
+		font-size: 20px;
+		padding: 5px;
+		transition: 0.5s ease-in-out;
+		font-family: monospace;
+		background-color:'';
+	}
+
+	.no-messages>p:hover{
+		color: green;
 	}
 </style>

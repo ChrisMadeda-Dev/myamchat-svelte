@@ -6,7 +6,7 @@
     .chat-box-nav{
         width: 100%;
         height: 100%;
-        background-color: aliceblue;
+        background-color:aliceblue;
         display: flex;
         justify-content: center;
         align-items: center;

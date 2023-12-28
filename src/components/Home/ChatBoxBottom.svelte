@@ -10,9 +10,7 @@
 		getDocs,
 		getDoc,
 		serverTimestamp,
-
 		setDoc
-
 	} from 'firebase/firestore';
 
 	let user;
@@ -63,8 +61,8 @@
 							createAt: serverTimestamp()
 						};
 
-						setDoc(recChatRef,recOut);
-						setDoc(senderChatRef,senderOut);
+						setDoc(recChatRef, recOut);
+						setDoc(senderChatRef, senderOut);
 
 						alert('Great: Chat has been set');
 					} else {
@@ -82,14 +80,18 @@
 
 <div class="chat-box-bottom">
 	<button on:click={addNewChat}>Add Chat</button>
+	<button>Set Dp</button>
 </div>
 
 <style>
 	.chat-box-bottom {
-		width: 100%;
+		height: 100%;
 		flex: 0 0 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background-color: aliceblue;
+		gap: 9px;
+		padding: 10px;
 	}
 </style>

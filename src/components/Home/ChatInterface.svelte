@@ -6,7 +6,16 @@
 	import { onAuthStateChanged } from 'firebase/auth';
 	import ComposeMessage from '../MessageBox/ComposeMessage.svelte';
 
+	import { store } from '../../store/Store';
+
 	let user;
+	let name;
+	let nameState = false;
+
+	$: {
+		name: $store.currentRecName;
+		name !== 'name' && nameState == true;
+	}
 
 	onMount(() => {
 		onAuthStateChanged(auth, (authUser) => {
@@ -17,13 +26,15 @@
 			}
 		});
 	});
-
 </script>
 
 <div class="chat-interface">
 	<div class="top">
 		<div class="top-left">
-			<span>Name</span>
+			{#if nameState}
+				<div>DP</div>
+				<span>{$store.currentRecName}</span>
+			{/if}
 		</div>
 		<div class="top-center" />
 		<div class="top-right" />
@@ -32,7 +43,7 @@
 		<MessageBox />
 	</div>
 	<div class="bottom">
-		<ComposeMessage/>
+		<ComposeMessage />
 	</div>
 </div>
 
@@ -53,15 +64,22 @@
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
+		background-color: aliceblue;
 	}
 
 	.top-left {
 		flex: 0 0 20%;
 		height: 100%;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
+		gap: 8px;
 		padding: 20px;
+		background-color: '';
+	}
+
+	.top-left > span {
+		padding: 5px;
 	}
 
 	.top-center {
@@ -91,6 +109,4 @@
 		justify-content: center;
 		align-items: center;
 	}
-
-	
 </style>
